@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/scripts.js" defer></script>
+    <style>
+        /* Additional styles for buttons */
+        button {
+            padding: 8px 12px; /* Adjust padding for smaller buttons */
+            font-size: 14px; /* Set a smaller font size */
+            border-radius: 5px; /* Rounded corners */
+            border: 1px solid #ddd; /* Border style */
+            background-color: #4CAF50; /* Button color */
+            color: white; /* Text color */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s; /* Transition effect */
+        }
+
+        button:hover {
+            background-color: #45a049; /* Darker shade on hover */
+        }
+
+        .cart-item {
+            margin: 10px 0; /* Space between cart items */
+            padding: 10px; /* Padding for cart item */
+            border: 1px solid #ddd; /* Border for cart item */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        .empty-cart {
+            text-align: center; /* Center the empty cart message */
+            font-size: 18px; /* Font size for the message */
+            color: #888; /* Gray color for the message */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Your Shopping Cart</h1>
+        <button onclick="window.location.href='inventory.html';">Continue Shopping</button>
+    </header>
+    <div id="cartItems"></div>
+    <h2>Total: ₹<span id="totalPrice">0</span></h2>
+    <button onclick="buyNow()">Buy Now</button>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function displayCart() {
+            const cartItemsDiv = document.getElementById('cartItems');
+            cartItemsDiv.innerHTML = '';
+            let total = 0;
+
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = '<p class="empty-cart">Your cart is empty.</p>'; // Message for empty cart
+            } else {
+                cart.forEach((item, index) => {
+                    total += item.price * item.quantity; // Update total based on quantity
+                    cartItemsDiv.innerHTML += `
+                        <div class="cart-item">
+                            <h3>${item.name}</h3>
+                            <p>Price: ₹${item.price}</p>
+                            <p>Quantity: 
+                                <button onclick="updateQuantity(${index}, 1)">+</button> 
+                                ${item.quantity} 
+                                <button onclick="updateQuantity(${index}, -1)">-</button>
+                            </p>
+                            <button onclick="removeItem(${index})">Remove</button>
+                        </div>
+                    `;
+                });
+            }
+
+            document.getElementById('totalPrice').innerText = total; // Update total price
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1); // Remove item from cart
+            localStorage.setItem('cart', JSON.stringify(cart)); // Update local storage
+            displayCart(); // Refresh the cart display
+        }
+
+        function updateQuantity(index, change) {
+            if (change === 1) {
+                cart[index].quantity += 1; // Increase quantity
+            } else if (change === -1) {
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity -= 1; // Decrease quantity
+                } else {
+                    removeItem(index); // Remove item if quantity is 1
+                }
+            }
+            localStorage.setItem('cart', JSON.stringify(cart)); // Update local storage
+            displayCart(); // Refresh the cart display
+        }
+
+        function buyNow() {
+            alert('Proceeding to payment...');
+            // Redirect to payment page or handle payment logic
+        }
+
+        displayCart(); // Initial call to display cart items
+    </script>
+</body>
+</html>

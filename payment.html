@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>payment form</title>
+<link rel="stylesheet" href="payment.css">
+</head>
+<body>
+<div class="container">
+    <form action="">
+        
+       <h1>Payment Form</h1>
+       <p class="required"> Required fields are followed by *</p> 
+       <fieldset id="contact Info">
+        <legend><h2>Contact Info</h2></legend>
+        <p>Name : *<input type="text" id="name" placeholder="Enter your name !!" required> </p>
+      <fieldset> <legend> Gender *</legend> Male <input type="radio" name="gender" id="male"> Female<input type="radio" name="gender" id="female"> Other <input type="radio" name="gender" id="other">  </fieldset>
+        <p>Address : <textarea name="address" id="address" cols="100" rows="10"></textarea> </p>
+        <p>Mail : * <input type="email" id="email" name="email" placeholder="abc@xyz.com" required> </p>
+        <p>Pincode : <input type="number" name="pincode" id="pincode" placeholder="123456"> </p>
+        </fieldset>
+        <fieldset id="payment Info">
+            <legend><h2>Payment Info</h2></legend>
+             <p>Card Type : *
+                <select name="card_type" id="card_type">
+                    <option value="">--Select a card type--</option>
+                    <option value="VISA">VISA</option>
+                    <option value="rupay">Rupay</option>
+                    <option value="UPI">UPI</option>
+                    <option value="Master card">Master Card</option>
+                </select>
+             </p>
+             <p> Card number : * <input type="number" name="card_number" id="card_number" placeholder="1111-2222-3333-4444" required> </p>
+             <p>Expiry Date : *<input type="date" name="expiry" id="expiry" required> </p>
+             <p>CVV : *<input type="password" name="CVV" id="CVV" placeholder="123" required> </p>
+
+            <input type="submit" value="Pay Now">
+        </fieldset>
+       
+    </form>
+</div>
+</body>
+</html>

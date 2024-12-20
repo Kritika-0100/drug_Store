@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Inventory</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/scripts.js" defer></script>
+    <style>
+         body {
+           background-image: url(homepage.png);
+           z-index: 0;
+           background-position:center;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <h1 align="center">Available Medicines</h1>
+        <div class="button-container">
+            <span id="cart-icon" onclick="window.location.href='cart.html';" style="cursor: pointer; font-size: 36px;">
+                &#x1F6D2; 
+            </span>
+            <button class="login-btn" onclick="window.location.href='index.html';">Home</button>
+            <button class="signup-btn" onclick="window.location.href='inventory.html';">Shop</button>
+        </div>
+    </header>
+    <div class="inventory-content">
+        <div id="inventoryList"></div>
+    </div>
+
+    <div class="medicine-list">
+        <!-- Medicine 1 -->
+        <div class="medicine-card">
+            <img src="img/paracetamol.jpeg" alt="Paracetamol">
+            <h3>Paracetamol</h3>
+            <p>Price: ₹50</p>
+            <button onclick="addToCart('Paracetamol', 50)">Add to Cart</button>
+            <button onclick="window.location.href='payment.html';">Buy Now</button>
+        </div>
+
+        <!-- Medicine 2 -->
+        <div class="medicine-card">
+            <img src="img/ibuprofen.jpeg" alt="Ibuprofen">
+            <h3>Ibuprofen</h3>
+            <p>Price: ₹60</p>
+            <button onclick="addToCart('Ibuprofen', 60)">Add to Cart</button>
+            <button onclick="window.location.href='payment.html';">Buy Now</button>
+        </div>
+
+        <!-- Medicine 3 -->
+        <div class="medicine-card">
+            <img src="img/amoxicillin.jpeg" alt="Amoxicillin">
+            <h3>Amoxicillin</h3>
+            <p>Price: ₹120</p>
+            <button onclick="addToCart('Amoxicillin', 120)">Add to Cart</button>
+            <button onclick="window.location.href='payment.html';">Buy Now</button>
+        </div>
+
+        <!-- Medicine 4 -->
+        <div class="medicine-card">
+            <img src="img/azithromycin.jpeg" alt="Azithromycin">
+            <h3>Azithromycin</h3>
+            <p>Price: ₹150</p>
+            <button onclick="addToCart('Azithromycin', 150)">Add to Cart</button>
+            <button onclick="window.location.href='payment.html';">Buy Now</button>
+        </div>
+
+        <!-- Medicine 5 -->
+        <div class="medicine-card">
+            <img src="img/cetrizen.jpeg" alt="Cetirizine">
+            <h3>Cetirizine</h3>
+            <p>Price: ₹40</p>
+            <button onclick="addToCart('Cetirizine', 40)">Add to Cart</button>
+            <button onclick="window.location.href='payment.html';">Buy Now</button>
+        </div>
+
+        <!-- Medicine 6 -->
+        <div class="medicine-card">
+            <img src="img/metformin.jpeg" alt="Metformin">
+            <h3>Metformin</h3>
+            <p>Price: ₹80</p>
+            <button onclick="addToCart('Metformin', 80)">Add to Cart</button>
+            <button onclick="window.location.href='payment.html';">Buy Now</button>
+        </div>
+
+        <!-- Medicine 7 -->
+        <div class="medicine-card">
+            <img src="img/atorvastatin.jpg" alt="Atorvastatin">
+            <h3>Atorvastatin</h3>
+            <p>Price: ₹90</p>
+            <button onclick="addToCart ('Atorvastatin', 90)">Add to Cart</button>
+            <button onclick="window.location.href='payment.html';">Buy Now</button>
+        </div>
+    </div>
+
+    <div id="notification" style="display:none; position:fixed; top:10px; right:10px; background-color:green; color:white; padding:10px; border-radius:5px;">
+        Product added to cart!
+    </div>
+
+    <script>
+        let cart = [];
+
+        function addToCart(productName, productPrice) {
+            cart.push({ name: productName, price: productPrice });
+            showNotification();
+            updateCartCount();
+        }
+
+        function showNotification() {
+            const notification = document.getElementById('notification');
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 2000);
+        }
+
+        function updateCartCount() {
+            const cartIcon = document.getElementById('cart-icon');
+            cartIcon.innerText = `🛒 (${cart.length})`;
+        }
+    </script>
+</body>
+</html>
+  
+  

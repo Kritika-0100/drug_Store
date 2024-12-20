@@ -1,0 +1,53 @@
+* {
+box-sizing: border-box;
+}
+
+body{
+font-family: monospace;
+margin: 15px 30px;
+font-size:17px;
+padding:8px;
+}
+
+p.required{
+color:rgb(234, 33, 33); 
+} 
+
+.container{
+background-color: lightgray;
+padding: 5px 20px 15px 20px;
+border:none;
+}
+
+fieldset#form {
+ background-color: lightgray;
+border:2px solid gray;
+border-radius:2px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="date"],
+select,
+textarea{
+width: 100%;
+border: 1px solid black;
+padding:10px;
+margin: 10px;
+}
+
+input[type="submit"] {
+background-color:#2dc818e8; 
+padding:12px 20px;
+border: 2px solid gray;
+border-radius: 14px;
+cursor: pointer;
+width: 100%;
+font-weight:bold;
+}
+
+input[type="submit"]:hover {
+background-color: lightgray;
+ }

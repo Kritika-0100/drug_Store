@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drug Inventory Login</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            background-image: url(homepage.png);
+            z-index: 0;
+        }
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50; /* Green background */
+            color: white; /* White text */
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 1000; /* Ensure it appears above other content */
+            transition: opacity 0.5s ease;
+            opacity: 0; /* Start hidden */
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body class="bg-light-blue">
+    <div class="form-container">
+        <h2>Login</h2>
+        <form id="loginForm" action="login.php" method="POST">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="register.html">Sign Up here</a></p>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("loginForm").addEventListener("submit", function (e) {
+                e.preventDefault(); // Prevent the default form submission
+
+                const username = document.getElementById("username").value;
+                const password = document.getElementById("password").value;
+
+                // Check if all fields are filled
+                if (username && password) {
+                    // Show notification
+                    showNotification("You're logged in");
+
+                    // Redirect to customer dashboard after 3 seconds
+                    setTimeout(() => {
+                        window.location.href = "customer_dashboard.html"; // Redirect to customer dashboard
+                    }, 3000); // Redirect after 3 seconds
+                } else {
+                    alert("Please enter all fields.");
+                }
+            });
+        });
+
+        function showNotification(message) {
+            const notification = document.getElementById("notification");
+            notification.innerText = message;
+            notification.style.display = "block";
+            notification.style.opacity = "1"; // Make it visible
+
+            // Hide the notification after 3 seconds
+            setTimeout(() => {
+                notification.style.opacity = "0"; // Fade out
+                setTimeout(() => {
+                    notification.style.display = "none"; // Hide it completely
+                }, 500); // Wait for fade out to complete
+            }, 3000); // Show for 3 seconds
+        }
+    </script>
+</body>
+</html>

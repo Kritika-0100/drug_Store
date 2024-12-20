@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KGS MedSync - HomePage</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+           background-image: url(homepage.png);
+           z-index: 0;
+           background-position:center;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="js/wix.js" defer></script>
+    <script src="js/scripts.js" defer></script>
+</head>
+<body>
+    <img id="logo" src="medlogo.png" width="100px" height="100px">
+
+    <div class="search-bar">
+        <input type="text" id="search" placeholder="Search for medicines...">
+        <button onclick="searchMedicine()">Search</button>
+    </div>
+
+    <!-- Button Container -->
+    <div class="button-container">
+        <span id="cart-icon" onclick="window.location.href='cart.html';" style="cursor: pointer; font-size: 36px;">
+            &#x1F6D2; 
+        </span>
+        <button class="login-btn" onclick="window.location.href='Login page.html';">Login</button>
+        <button class="signup-btn" onclick="window.location.href='register.html';">Sign Up</button>
+        <!-- <button class="signup-btn" onclick="window.location.href='inventory.html';">Shop</button> -->
+
+    </div>
+
+    <h1 id="greet" align="center">Welcome to the <br> <b>MEDSYNC</b></h1>
+
+    <div class="info-box" id="infoBox">
+        At <b>MEDSYNC</b>, we connect healthcare providers and patients seamlessly. 
+        Our platform offers secure appointment booking, health record management, 
+        and real-time health updates, ensuring a smooth and efficient healthcare experience.
+        Our platform provides an all-in-one solution for patients to easily book appointments, manage their health records, and receive timely updates on prescriptions, test results, and medical history. We prioritize user privacy and ensure that all data is securely stored with the latest encryption technologies. Whether you’re looking to schedule a doctor’s appointment, monitor your health progress, or stay on top of your family’s healthcare needs, <b>MEDSYNC</b> is here to streamline your healthcare journey. With a focus on ease of use and efficiency, we aim to make healthcare more accessible, reliable, and stress-free for everyone.
+    </div>
+   <br><br><br><br><br><br>
+
+
+   <section class="featured-medicines">
+    <h1 align="center">Featured Medicines</h1>
+    <div class="medicine-list">
+        <div class="medicine-card">
+            <img src="img/Advil.jpeg" alt="Advil">
+            <h3>Advil</h3>
+            <p> ₹10.00</p>
+            <button class="add-to-cart" onclick="window.location.href='Login page.html';">Add to Cart</button>
+            <button onclick="window.location.href='Login page.html';">Buy Now</button>
+        </div>
+        <div class="medicine-card">
+            <img src="img/cetrizen.jpeg" alt="Cetrzen">
+            <h3>Cetrzen</h3>
+            <p> ₹15.00</p>
+            <button class="add-to-cart" onclick="window.location.href='Login page.html';">Add to Cart</button>
+            <button onclick="window.location.href='Login page.html';">Buy Now</button>
+        </div>
+    
+        <div class="medicine-card">
+            <img src="img/ibuprofen.jpeg" alt="Ibuprofen">
+            <h3>Ibuprofen</h3>
+            <p> ₹25.00</p>
+            <button class="add-to-cart" onclick="window.location.href='Login page.html';">Add to Cart</button>
+            <button onclick="window.location.href='Login page.html';">Buy Now</button>
+        </div>
+        <div class="medicine-card">
+            <img src="img/lasartan 50mg.jpeg" alt="Lasartan 50mg">
+            <h3>Lasartan 50mg</h3>
+            <p> ₹30.00</p>
+            <button class="add-to-cart" onclick="window.location.href='Login page.html';">Add to Cart</button>
+            <button onclick="window.location.href='Login page.html';">Buy Now</button>
+        </div>
+        <div class="medicine-card">
+            <img src="img/paracetamol.jpeg" alt="Paracetamol">
+            <h3>Paracetamol</h3>
+            <p> ₹7.00</p>
+            <button class="add-to-cart" onclick="window.location.href='Login page.html';">Add to Cart</button>
+            <button onclick="window.location.href='Login page.html';">Buy Now</button>
+        </div>
+    </div>
+</section>
+
+<br><br><br><br><br>
+
+<h2 align="center">Categories</h2>
+<br>
+<div class="category-container">
+    
+    <div class="category-card" oonclick="window.location.href='Login page.html';">
+        <img src="img/dental.jpg" alt="Dental Care">
+        <h3>Dental Care</h3>
+    </div>
+    <div class="category-card" onclick=onclick="window.location.href='Login page.html';">
+        <img src="img/skin.jpg" alt="Skin Care">
+        <h3>Skin Care</h3>
+    </div>
+    <div class="category-card" onclick=onclick="window.location.href='Login page.html';">
+        <img src="img/health.jpg" alt="Health Care">
+        <h3>Health Care</h3>
+    </div>
+    <div class="category-card"onclick="window.location.href='Login page.html';">
+        <img src="img/women.jpg" alt="Women Health">
+        <h3>Women Health</h3>
+    </div>
+    <div class="category-card" onclick="window.location.href='Login page.html';">
+        <img src="img/child.jpg" alt="Child Health">
+        <h3>Child Health</h3>
+    </div>
+    <div class="category-card" onclick="window.location.href='Login page.html';">
+        <img src="img/elder.jpg" alt="elder Health">
+        <h3>Elderly Health</h3>
+    </div>
+</div>
+
+
+<br><br><br><br><br>
+    <div class="contact-container" align="center" width="50%">
+        <h1 align="center">Contact Us</h1>
+        <form action="https://api.web3forms.com/submit" id="contactForm" method="POST" >
+        <input type="hidden" name="access_key" value="d5be935a-7a39-4c54-bc82-2139ff47074b">
+            <div class="form-group">
+                <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name !!" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+            </div> <br>
+            <div class="form-group">
+                <textarea id="message" name="message" class="form-control" rows="4" placeholder="Write your message" required></textarea>
+            </div>
+            <div id="result">
+            <button type="submit" class="submit">Submit</button> </div>
+        </form>
+        <p id="successMessage" class="success-message"></p>
+        
+    </div>
+
+
+    
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script>
+        window.onload = function() {
+            const infoBox = document.getElementById('infoBox');
+            setTimeout(() => {
+                infoBox.classList.add('show');
+            }, 500);
+        };
+
+        function searchMedicine() {
+            const searchQuery = document.getElementById('search').value;
+            if (searchQuery) {
+                alert('Searching for: ' + searchQuery);
+                // Replace this with your actual search logic with the database
+            } else {
+                alert('Please enter a medicine name');
+            }
+        }
+
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const messageBox = document.getElementById('messageBox');
+
+    // Basic validation
+    if (name === '') {
+        messageBox.textContent = 'Name is required.';
+        messageBox.style.color = 'red';
+        return;
+    }
+    if (email === '') {
+        messageBox.textContent = 'Email is required.';
+        messageBox.style.color = 'red';
+        return;
+    }
+    if (!validateEmail(email)) {
+        messageBox.textContent = 'Invalid email format.';
+        messageBox.style.color = 'red';
+        return;
+    }
+    if (message === '') {
+        messageBox.textContent = 'Message is required.';
+        messageBox.style.color = 'red';
+        return;
+    }
+
+    messageBox.textContent = 'Form submitted successfully!';
+    messageBox.style.color = 'green';
+
+    // You may want to add the fetch logic here to submit the form data
+});
+
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+function addToCart(name, price) {
+    const existingItem = cart.find(item => item.name === name);
+    if (existingItem) {
+        existingItem.quantity += 1; // Increase quantity if item already in cart
+    } else {
+        cart.push({ name, price, quantity: 1 }); // Add new item to cart
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    showNotification(`${name} has been added to your cart.`);
+    updateCartTotal();
+}
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.innerText = message;
+    document.body.appendChild(notification);
+    setTimeout(() => {
+        notification.remove();
+    }, 3000); // Notification will disappear after 3 seconds
+}
+
+// Function to update the total amount in the cart
+function updateCartTotal() {
+    const totalAmount = calculateTotal();
+    const totalAmountElement = document.getElementById('totalAmount');
+    if (totalAmountElement) {
+        totalAmountElement.innerText = totalAmount;
+    }
+}
+
+// Function to calculate total amount
+function calculateTotal() {
+    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+}
+
+// Function to remove items from the cart
+function removeFromCart(name) {
+    cart = cart.filter(item => item.name !== name);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    showNotification(`${name} has been removed from your cart.`);
+    displayCart();
+}
+
+// Function to clear the cart
+function clearCart() {
+    localStorage.removeItem('cart');
+    cart = [];
+    displayCart();
+    showNotification('Cart has been cleared.');
+}
+
+// Function to display cart contents
+function displayCart() {
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartItemsContainer = document.getElementById('cartItems');
+    // cartItemsContainer.innerHTML = '';
+
+    if (cartItems.length === 0) {
+        cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+        document.getElementById('totalAmount').innerText = '0';
+        return;
+    }
+
+    let totalAmount = 0;
+
+    cartItems.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+        itemDiv.innerHTML = `
+            <h4>${item.name} (₹${item.price})</h4>
+            <p>Quantity: <button onclick="changeQuantity('${item.name}', -1)">-</button> ${item.quantity} <button onclick="changeQuantity('${item.name}', 1)">+</button></p>
+            <button onclick="removeFromCart('${item.name}')">Remove</button>
+        `;
+        // cartItemsContainer.appendChild(itemDiv);
+        totalAmount += item.price * item.quantity;
+    });
+
+    // document.getElementById('totalAmount').inn   erText = totalAmount;
+}
+
+// Function to change quantity
+function changeQuantity(name, change) {
+    const item = cart.find(item => item.name === name);
+    if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+            removeFromCart(name);
+        } else {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+            updateCartTotal();
+        }
+    }
+}
+
+// Display cart on page load
+document.addEventListener("DOMContentLoaded", displayCart);
+    </script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Health Inventory</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            background-image: url(homepage.png);
+            z-index: 0;
+            background-position: center;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 1em;
+            background-color: #4CAF50;
+            color: white;
+        }
+        .inventory-content {
+            display: flex;
+            flex-wrap: wrap; /* Allows cards to wrap to the next line */
+            justify-content: space-around; /* Space between cards */
+            padding: 20px;
+        }
+        .medicine-card {
+            background-color: rgba(255, 255, 255, 0.9); /* Card background color */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            margin: 10px; /* Space between cards */
+            padding: 15px; /* Inner padding */
+            text-align: center; /* Centered text */
+            width: 200px; /* Fixed width for cards */
+            transition: transform 0.3s; /* Animation for hover effect */
+        }
+        .medicine-card:hover {
+            transform: scale(1.05); /* Scale effect on hover */
+        }
+        .medicine-card img {
+            max-width: 100%; /* Responsive image */
+            border-radius: 5px; /* Rounded image corners */
+        }
+        .medicine-card button {
+            margin-top: 10px; /* Space above button */
+            background-color: #4CAF50; /* Button color */
+            color: white; /* Text color */
+            border: none; /* Remove border */
+            padding: 10px; /* Button padding */
+            border-radius: 5px; /* Rounded button corners */
+            cursor: pointer; /* Pointer cursor on hover */
+        }
+        .medicine-card button:hover {
+            background-color: #45a049; /* Darker shade on hover */
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <h1>Women's Health Inventory</h1>
+        <div class="button-container">
+            <span id="cart-icon" onclick="window.location.href='cart.html';" style="cursor: pointer; font-size: 36px;">
+                &#x1F6D2; 
+            </span>
+            <button class="login-btn" onclick="window.location.href='Login page.html';">Login</button>
+            <button class="signup-btn" onclick="window.location.href='register.html';">Sign Up</button>
+            <button class="signup-btn" onclick="window.location.href='index.html';">Home</button>
+        </div>
+    </header>
+
+    <div class="inventory-content">
+        <!-- Sample Women's Health Products -->
+        <div class="medicine-card">
+            <img src="images/multivitamin.jpg" alt="Multivitamin">
+            <h3>Multivitamin</h3>
+            <p>Price: ₹500</p>
+            <p>Daily multivitamin for women's health.</p>
+            <button onclick="addToCart('Multivitamin', 500)">Add to Cart</button>
+            <button onclick="buyNow('Multivitamin', 500)">Buy Now</button>
+        </div>
+        <div class="medicine-card">
+            <img src="images/iron_supplement.jpg" alt="Iron Supplement">
+            <h3>Iron Supplement</h3>
+            <p>Price: ₹300</p>
+            <p>Iron supplement to support energy levels.</p>
+            <button onclick="addToCart('Iron Supplement', 300)">Add to Cart</button>
+            <button onclick="buyNow('Iron Supplement', 300)">Buy Now</button>
+        </div>
+        <div class="medicine-card">
+            <img src="images/calcium_tablets.jpg" alt="Calcium Tablets">
+ <h3>Calcium Tablets</h3>
+            <p>Price: ₹400</p>
+            <p>Calcium tablets for bone health.</p>
+            <button onclick="addToCart('Calcium Tablets', 400)">Add to Cart</button>
+            <button onclick="buyNow('Calcium Tablets', 400)">Buy Now</button>
+        </div>
+    </div>
+
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script>
+        window.onload = function() {
+            const infoBox = document.getElementById('infoBox');
+            setTimeout(() => {
+                infoBox.classList.add('show');
+            }, 500);
+        };
+
+        function searchMedicine() {
+            const searchQuery = document.getElementById('search').value;
+            if (searchQuery) {
+                alert('Searching for: ' + searchQuery);
+                // Replace this with your actual search logic with the database
+            } else {
+                alert('Please enter a medicine name');
+            }
+        }
+
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const messageBox = document.getElementById('messageBox');
+
+    // Basic validation
+    if (name === '') {
+        messageBox.textContent = 'Name is required.';
+        messageBox.style.color = 'red';
+        return;
+    }
+    if (email === '') {
+        messageBox.textContent = 'Email is required.';
+        messageBox.style.color = 'red';
+        return;
+    }
+    if (!validateEmail(email)) {
+        messageBox.textContent = 'Invalid email format.';
+        messageBox.style.color = 'red';
+        return;
+    }
+    if (message === '') {
+        messageBox.textContent = 'Message is required.';
+        messageBox.style.color = 'red';
+        return;
+    }
+
+    messageBox.textContent = 'Form submitted successfully!';
+    messageBox.style.color = 'green';
+
+    // You may want to add the fetch logic here to submit the form data
+});
+
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+function addToCart(name, price) {
+    const existingItem = cart.find(item => item.name === name);
+    if (existingItem) {
+        existingItem.quantity += 1; // Increase quantity if item already in cart
+    } else {
+        cart.push({ name, price, quantity: 1 }); // Add new item to cart
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    showNotification(`${name} has been added to your cart.`);
+    updateCartTotal();
+}
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.innerText = message;
+    document.body.appendChild(notification);
+    setTimeout(() => {
+        notification.remove();
+    }, 3000); // Notification will disappear after 3 seconds
+}
+
+// Function to update the total amount in the cart
+function updateCartTotal() {
+    const totalAmount = calculateTotal();
+    const totalAmountElement = document.getElementById('totalAmount');
+    if (totalAmountElement) {
+        totalAmountElement.innerText = totalAmount;
+    }
+}
+
+// Function to calculate total amount
+function calculateTotal() {
+    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+}
+
+// Function to remove items from the cart
+function removeFromCart(name) {
+    cart = cart.filter(item => item.name !== name);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    showNotification(`${name} has been removed from your cart.`);
+    displayCart();
+}
+
+// Function to clear the cart
+function clearCart() {
+    localStorage.removeItem('cart');
+    cart = [];
+    displayCart();
+    showNotification('Cart has been cleared.');
+}
+
+// Function to display cart contents
+function displayCart() {
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartItemsContainer = document.getElementById('cartItems');
+    // cartItemsContainer.innerHTML = '';
+
+    if (cartItems.length === 0) {
+        cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+        document.getElementById('totalAmount').innerText = '0';
+        return;
+    }
+
+    let totalAmount = 0;
+
+    cartItems.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+        itemDiv.innerHTML = `
+            <h4>${item.name} (₹${item.price})</h4>
+            <p>Quantity: <button onclick="changeQuantity('${item.name}', -1)">-</button> ${item.quantity} <button onclick="changeQuantity('${item.name}', 1)">+</button></p>
+            <button onclick="removeFromCart('${item.name}')">Remove</button>
+        `;
+        // cartItemsContainer.appendChild(itemDiv);
+        totalAmount += item.price * item.quantity;
+    });
+
+    // document.getElementById('totalAmount').inn   erText = totalAmount;
+}
+
+// Function to change quantity
+function changeQuantity(name, change) {
+    const item = cart.find(item => item.name === name);
+    if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+            removeFromCart(name);
+        } else {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+            updateCartTotal();
+        }
+    }
+}
+
+// Display cart on page load
+document.addEventListener("DOMContentLoaded", displayCart);
+    </script>
+</body>
+</html>
